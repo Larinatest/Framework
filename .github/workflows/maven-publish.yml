@@ -1,3 +1,4 @@
+
 name: Java CI with Maven
 
 on:
@@ -18,6 +19,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
+        distribution: 'temurin'  # Используйте правильное значение для вашей JDK
 
     - name: Build with Maven
       run: mvn clean verify
