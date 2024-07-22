@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTest {
 
     @Test
-    public void shouldRegisterPlayers() {
+    public void shouldRegisterPlayer() {
         Game game = new Game();
         Player player1 = new Player(1, "Player1", 10);
         game.register(player1);
@@ -16,12 +16,24 @@ public class GameTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfPlayerNotRegistered() {
+    public void shouldThrowExceptionIfFirstPlayerNotRegistered() {
         Game game = new Game();
         Player player1 = new Player(1, "Player1", 10);
+        game.register(player1);
 
         assertThrows(NotRegisteredException.class, () -> {
             game.round("Player1", "Player2");
+        });
+    }
+
+    @Test
+    public void shouldThrowExceptionIfSecondPlayerNotRegistered() {
+        Game game = new Game();
+        Player player1 = new Player(1, "Player1", 10);
+        game.register(player1);
+
+        assertThrows(NotRegisteredException.class, () -> {
+            game.round("Player2", "Player1");
         });
     }
 

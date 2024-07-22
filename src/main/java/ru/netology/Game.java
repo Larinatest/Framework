@@ -14,8 +14,11 @@ public class Game {
         Player player1 = findByName(playerName1);
         Player player2 = findByName(playerName2);
 
-        if (player1 == null || player2 == null) {
-            throw new NotRegisteredException("Player is not registered");
+        if (player1 == null) {
+            throw new NotRegisteredException("Player with name: " + playerName1 + " is not registered");
+        }
+        if (player2 == null) {
+            throw new NotRegisteredException("Player with name: " + playerName2 + " is not registered");
         }
 
         if (player1.getStrength() > player2.getStrength()) {
@@ -36,4 +39,3 @@ public class Game {
         return null;
     }
 }
-
